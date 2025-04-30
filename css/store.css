@@ -8,7 +8,7 @@
     height: 400px;
     background-repeat: no-repeat;
     background-position: 0 0;
-    background-image: url(/images/store/intro_visual.jpg);
+    background-image: url(..//images/store/intro_visual.jpg);
     background-size: cover;
     position: relative;
     overflow: visible;
@@ -1103,11 +1103,10 @@ input[type='number']::-webkit-inner-spin-button {
     margin-left: 10px;
     color: var(--main-color);
 }
-.reservation
-    .data-reservation
-    .personal-information
-    .check-personal-information
-    i.xi-angle-down-min {
+
+/* 추가설명 다운 */
+.reservation .data-reservation .personal-information .check-personal-information i.ph-caret-down {
+    color: red;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);

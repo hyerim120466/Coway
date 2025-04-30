@@ -103,7 +103,9 @@ const lifeElc = () => {
         });
 
         // 태그 삭제 처리
-        const compareCloseBtns = getAll('#lifeElc .compareDiv .compareShowDiv ul li .divStep .closeBtn');
+        const compareCloseBtns = getAll(
+            '#lifeElc .compareDiv .compareShowDiv ul li .divStep .closeBtn'
+        );
         const compareDiv = get('#lifeElc .compareDiv');
         const compareShowDiv = get('#lifeElc .compareDiv .compareShowDiv');
         const compareImg = getAll('#lifeElc .compareDiv .compareShowDiv ul li .divStep img');
@@ -143,10 +145,14 @@ const lifeElc = () => {
     mainImage.addEventListener('click', (e) => {
         location.href = '/page/products/lifeelc/lifeelcDetail.html';
         // localstorage 사용
-        if (location.pathname.split('/').pop() === 'lifeelc.html') localStorage.setItem('productDetail', JSON.stringify(objectData[7]));
-        if (location.pathname.split('/').pop() === 'waterelc.html') localStorage.setItem('productDetail', JSON.stringify(objectData[2]));
-        if (location.pathname.split('/').pop() === 'berexelc.html') localStorage.setItem('productDetail', JSON.stringify(objectData[5]));
-        if (location.pathname.split('/').pop() === 'refurb.html') localStorage.setItem('productDetail', JSON.stringify(objectData[1]));
+        if (location.pathname.split('/').pop() === 'lifeelc.html')
+            localStorage.setItem('productDetail', JSON.stringify(objectData[7]));
+        if (location.pathname.split('/').pop() === 'waterelc.html')
+            localStorage.setItem('productDetail', JSON.stringify(objectData[2]));
+        if (location.pathname.split('/').pop() === 'berexelc.html')
+            localStorage.setItem('productDetail', JSON.stringify(objectData[5]));
+        if (location.pathname.split('/').pop() === 'refurb.html')
+            localStorage.setItem('productDetail', JSON.stringify(objectData[1]));
     });
 
     // 필터
@@ -283,11 +289,14 @@ const lifeElc = () => {
                 // id 정렬
                 if (idx === 0) sortData = [...objectData].sort((a, b) => a.id - b.id);
                 // 판매순 정렬
-                else if (idx === 1) sortData = [...objectData].sort((a, b) => b.starCnt - a.starCnt);
+                else if (idx === 1)
+                    sortData = [...objectData].sort((a, b) => b.starCnt - a.starCnt);
                 // 낮은 가격순
-                else if (idx === 2) sortData = [...objectData].sort((a, b) => a.purPrice - b.purPrice);
+                else if (idx === 2)
+                    sortData = [...objectData].sort((a, b) => a.purPrice - b.purPrice);
                 // 높은 가격순
-                else if (idx === 3) sortData = [...objectData].sort((a, b) => b.purPrice - a.purPrice);
+                else if (idx === 3)
+                    sortData = [...objectData].sort((a, b) => b.purPrice - a.purPrice);
 
                 // // 기존 ul 삭제 & 제품 정렬 & 비교제품 리셋
                 const delUl = get('#lifeElc .contents .itemList .listUl');
@@ -552,7 +561,9 @@ const lifeElc = () => {
         compareBtn.forEach((btn, idx) => {
             btn.addEventListener('click', (e) => {
                 const comDivs = getAll('#lifeElc .compareDiv .compareShowDiv ul li .divStep');
-                const comPs = getAll('#lifeElc .compareDiv .compareShowDiv ul li .divStep .comment');
+                const comPs = getAll(
+                    '#lifeElc .compareDiv .compareShowDiv ul li .divStep .comment'
+                );
 
                 // 비교 제품 적재
                 if (pressBtnCnt < 4 && !btn.classList.contains('active')) {
@@ -576,7 +587,10 @@ const lifeElc = () => {
                             const choiceModel = btn.parentElement.dataset.model;
                             // 담겨있는 비교 제품에 맞춰 해제 처리
                             comDivs.forEach((div, i) => {
-                                if (!div.children[3] == '' && choiceModel === div.children[3].textContent) {
+                                if (
+                                    !div.children[3] == '' &&
+                                    choiceModel === div.children[3].textContent
+                                ) {
                                     // 배경 div css 처리
                                     comDivs[i].classList.remove('Com');
                                     comDivs[i].classList.add('noCom');
@@ -609,14 +623,20 @@ const lifeElc = () => {
 
                     const compareModel = document.createElement('p'); // 모델명
                     compareModel.classList.add('model');
-                    if (typeof sortData[idx].model === 'object') compareModel.textContent = sortData[idx].model[0];
+                    if (typeof sortData[idx].model === 'object')
+                        compareModel.textContent = sortData[idx].model[0];
                     else compareModel.textContent = sortData[idx].model;
 
                     const compareName = document.createElement('p'); // 제품명
                     compareName.classList.add('name');
                     compareName.textContent = sortData[idx].name;
 
-                    comDivs[pressBtnCnt].append(compareCloseBtns[pressBtnCnt], compareImg, compareModel, compareName);
+                    comDivs[pressBtnCnt].append(
+                        compareCloseBtns[pressBtnCnt],
+                        compareImg,
+                        compareModel,
+                        compareName
+                    );
 
                     pressBtnCnt++;
                     compareP.innerHTML = `비교하실 제품이 <span>${pressBtnCnt}</span> 개 담겼습니다.`;
@@ -646,7 +666,9 @@ const lifeElc = () => {
                 sortData.forEach((product, pdx) => {
                     if (model.dataset.model.includes(product.key)) {
                         if (typeof product.model === 'object') {
-                            const midC = getAll('#lifeElc .contents .itemList ul .listLi .midColor');
+                            const midC = getAll(
+                                '#lifeElc .contents .itemList ul .listLi .midColor'
+                            );
 
                             // 클릭 css 비활성화
                             for (let i = 0; i < midC[pdx].children.length; i++) {
@@ -656,9 +678,16 @@ const lifeElc = () => {
                             product.model.forEach((p, i) => {
                                 if (p === model.dataset.model) {
                                     model.classList.add('active'); // 클릭 css 활성화
-                                    const imgs = getAll('#lifeElc .contents .itemList ul .listLi .midPhoto a img');
-                                    imgs[pdx].setAttribute('src', `/../images/products/lifeElc/${product.key}/${p}.png`); // 모델사진 수정
-                                    const models = getAll('#lifeElc .contents .itemList ul .listLi .btm .model');
+                                    const imgs = getAll(
+                                        '#lifeElc .contents .itemList ul .listLi .midPhoto a img'
+                                    );
+                                    imgs[pdx].setAttribute(
+                                        'src',
+                                        `/../images/products/lifeElc/${product.key}/${p}.png`
+                                    ); // 모델사진 수정
+                                    const models = getAll(
+                                        '#lifeElc .contents .itemList ul .listLi .btm .model'
+                                    );
                                     models[pdx].textContent = `${product.model[i]}`; // 모델명 수정
                                 }
                             });
@@ -729,7 +758,10 @@ const lifeElcDetail = () => {
                     detailData.key !== 'MB-B01' &&
                     detailData.key !== 'MC-C01'
                 ) {
-                    imgs[idx].setAttribute('src', `/../images/products/lifeElc/${detailData.key}/${detailData.key}_display0${idx}.png`);
+                    imgs[idx].setAttribute(
+                        'src',
+                        `/../images/products/lifeElc/${detailData.key}/${detailData.key}_display0${idx}.png`
+                    );
                     imgs[idx].setAttribute('alt', `display0${idx}.png`);
                 }
                 // CIR-F41, BAS41-A, BB17-A, BB16-A, MC-B02, MC-B03, MB-M02, MB-C01, MB-B01, MC-C01
@@ -746,7 +778,10 @@ const lifeElcDetail = () => {
                     detailData.key === 'MC-C01'
                 ) {
                     for (let i = 0; i < detailData.model.length; i++) {
-                        imgs[idx].setAttribute('src', `/../images/products/lifeElc/${detailData.key}/${detailData.model[0]}_display0${idx}.png`);
+                        imgs[idx].setAttribute(
+                            'src',
+                            `/../images/products/lifeElc/${detailData.key}/${detailData.model[0]}_display0${idx}.png`
+                        );
                     }
                     imgs[idx].setAttribute('alt', `display0${idx}.png`);
                 }
@@ -807,13 +842,17 @@ const lifeElcDetail = () => {
         // right - step2
         // color
         const color = get('#lifeElcDetail .detailDiv .rightDiv .option .color');
-        if (typeof detailData.color === 'object') color.textContent = `${hexToColor(detailData.color[0])}`;
-        else if (typeof detailData.color === 'string') color.textContent = `${hexToColor(detailData.color)}`;
+        if (typeof detailData.color === 'object')
+            color.textContent = `${hexToColor(detailData.color[0])}`;
+        else if (typeof detailData.color === 'string')
+            color.textContent = `${hexToColor(detailData.color)}`;
 
         // 렌탈 탭
         const rentTabOpen = () => {
             // 렌탈 등록비
-            const registPrice = get('#lifeElcDetail .detailDiv .rightDiv .rent .top1 .registRegist .registPrice');
+            const registPrice = get(
+                '#lifeElcDetail .detailDiv .rightDiv .rent .top1 .registRegist .registPrice'
+            );
             registPrice.textContent = `- ${strToNum(detailData.lenterDiscount)}원`;
 
             // 렌탈 등록비 안내
@@ -840,51 +879,71 @@ const lifeElcDetail = () => {
             });
 
             // 프로모션 할인 혜택
-            const promotionPrice = get('#lifeElcDetail .detailDiv .rightDiv .rent .top1 .promotion .promotionPrice');
+            const promotionPrice = get(
+                '#lifeElcDetail .detailDiv .rightDiv .rent .top1 .promotion .promotionPrice'
+            );
             promotionPrice.textContent = `- ${strToNum(detailData.lenterDiscount)}원`;
 
             // 2대 이상 주문 시
-            const twoMoreOrder = get('#lifeElcDetail .detailDiv .rightDiv .rent .top2 .twoMoreOrder .twoMoreOrderPrice');
+            const twoMoreOrder = get(
+                '#lifeElcDetail .detailDiv .rightDiv .rent .top2 .twoMoreOrder .twoMoreOrderPrice'
+            );
             twoMoreOrder.textContent = `- ${strToNum(detailData.moreOrder)}원`;
 
             // 코웨이 제품 보유 시
-            const haveCoway = get('#lifeElcDetail .detailDiv .rightDiv .rent .top2 .haveCoway .haveCowayPrice');
+            const haveCoway = get(
+                '#lifeElcDetail .detailDiv .rightDiv .rent .top2 .haveCoway .haveCowayPrice'
+            );
             haveCoway.textContent = `- ${strToNum(detailData.haveCoway)}원`;
 
             // 약정 최대 할인 총액 (초기)
-            const disCountTotalPrice = get('#lifeElcDetail .detailDiv .rightDiv .rent .top2 .disCountTotal .disCountTotalPrice');
+            const disCountTotalPrice = get(
+                '#lifeElcDetail .detailDiv .rightDiv .rent .top2 .disCountTotal .disCountTotalPrice'
+            );
             disCountTotalPrice.textContent = `- ${strToNum(detailData.lenterDiscount)}원`;
 
             // 체크박스 클릭
-            const top2Radios = getAll(`#lifeElcDetail .detailDiv .rightDiv .rent .top2 input[type='checkbox']`);
+            const top2Radios = getAll(
+                `#lifeElcDetail .detailDiv .rightDiv .rent .top2 input[type='checkbox']`
+            );
             top2Radios.forEach((checkbox, idx) => {
                 checkbox.addEventListener('click', (e) => {
                     let discountCul = 0;
 
                     // 추가 할인 계산하기
-                    const addDiscountPrice = get('#lifeElcDetail .detailDiv .rightDiv .rent .top2 .addDiscount .addDiscountPrice');
+                    const addDiscountPrice = get(
+                        '#lifeElcDetail .detailDiv .rightDiv .rent .top2 .addDiscount .addDiscountPrice'
+                    );
 
                     if (idx === 0) {
                         top2Radios[1].checked = false;
                         addDiscountPrice.textContent = `- ${strToNum(detailData.moreOrder)}원`;
                         discountCul = detailData.moreOrder;
-                        disCountTotalPrice.textContent = `- ${strToNum(detailData.lenterDiscount + discountCul)}원`;
+                        disCountTotalPrice.textContent = `- ${strToNum(
+                            detailData.lenterDiscount + discountCul
+                        )}원`;
                     }
                     if (idx === 1) {
                         top2Radios[0].checked = false;
                         addDiscountPrice.textContent = `- ${strToNum(detailData.haveCoway)}원`;
                         discountCul = detailData.haveCoway;
-                        disCountTotalPrice.textContent = `- ${strToNum(detailData.lenterDiscount + discountCul)}원`;
+                        disCountTotalPrice.textContent = `- ${strToNum(
+                            detailData.lenterDiscount + discountCul
+                        )}원`;
                     }
                     if (!top2Radios[0].checked && !top2Radios[1].checked) {
                         addDiscountPrice.textContent = '- 0원';
-                        disCountTotalPrice.textContent = `- ${strToNum(detailData.lenterDiscount)}원`;
+                        disCountTotalPrice.textContent = `- ${strToNum(
+                            detailData.lenterDiscount
+                        )}원`;
                     }
                 });
             });
 
             // 예상 렌탈료
-            const rentPrice = get('#lifeElcDetail .detailDiv .rightDiv .rent .rentPriceResult .rentTotal .rentPrice');
+            const rentPrice = get(
+                '#lifeElcDetail .detailDiv .rightDiv .rent .rentPriceResult .rentTotal .rentPrice'
+            );
             rentPrice.textContent = `${strToNum(detailData.rentPrice)}`;
 
             // 렌탈 - 장바구니, 렌탈하기 버튼
@@ -892,19 +951,26 @@ const lifeElcDetail = () => {
             rentBtns.forEach((btn, idx) => {
                 btn.addEventListener('click', (e) => {
                     if (idx === 0) showPopup('장바구니에 담았습니다.');
-                    if (idx === 1) showPopup('렌탈담당 상담사가 등록된 연락처로 연락을 드릴 예정입니다.');
+                    if (idx === 1)
+                        showPopup('렌탈담당 상담사가 등록된 연락처로 연락을 드릴 예정입니다.');
                 });
             });
 
             // 렌탈료 총합
-            const totalUsePrice = get('#lifeElcDetail .detailDiv .rightDiv .rent .rentNotice .totalUsePrice');
-            totalUsePrice.textContent = `6년(의무사용기간) ${strToNum(detailData.rentPrice * 72)}원`;
+            const totalUsePrice = get(
+                '#lifeElcDetail .detailDiv .rightDiv .rent .rentNotice .totalUsePrice'
+            );
+            totalUsePrice.textContent = `6년(의무사용기간) ${strToNum(
+                detailData.rentPrice * 72
+            )}원`;
         };
 
         // 구매 탭
         const buyTabOpen = () => {
             // 예상 결제금액
-            const buyTotal = get('#lifeElcDetail .detailDiv .rightDiv .buy .buyPriceResult .buyTotal .buyPrice');
+            const buyTotal = get(
+                '#lifeElcDetail .detailDiv .rightDiv .buy .buyPriceResult .buyTotal .buyPrice'
+            );
             buyTotal.textContent = `${strToNum(detailData.purPrice)}`;
 
             // 구매 - 장바구니, 렌탈하기 버튼
@@ -912,7 +978,8 @@ const lifeElcDetail = () => {
             buyBtns.forEach((btn, idx) => {
                 btn.addEventListener('click', (e) => {
                     if (idx === 0) showPopup('장바구니에 담았습니다.');
-                    if (idx === 1) showPopup('구매담당 상담사가 등록된 연락처로 연락을 드릴 예정입니다.');
+                    if (idx === 1)
+                        showPopup('구매담당 상담사가 등록된 연락처로 연락을 드릴 예정입니다.');
                 });
             });
         };
@@ -964,28 +1031,52 @@ const lifeElcDetail = () => {
                     detailData.key !== 'MC-C01'
                 ) {
                     if (typeof detailData.model === 'object') {
-                        mainImg.setAttribute('src', `/../images/products/lifeElc/${detailData.key}/${detailData.model[idx]}.png`);
-                        subImg1.setAttribute('src', `/../images/products/lifeElc/${detailData.key}/${detailData.model[idx]}.png`);
+                        mainImg.setAttribute(
+                            'src',
+                            `/../images/products/lifeElc/${detailData.key}/${detailData.model[idx]}.png`
+                        );
+                        subImg1.setAttribute(
+                            'src',
+                            `/../images/products/lifeElc/${detailData.key}/${detailData.model[idx]}.png`
+                        );
                         color.textContent = `${hexToColor(detailData.color[idx])}`;
                     } else if (typeof detailData.model === 'string') {
-                        mainImg.setAttribute('src', `/../images/products/lifeElc/${detailData.key}/${detailData.model}.png`);
-                        subImg1.setAttribute('src', `/../images/products/lifeElc/${detailData.key}/${detailData.model}.png`);
+                        mainImg.setAttribute(
+                            'src',
+                            `/../images/products/lifeElc/${detailData.key}/${detailData.model}.png`
+                        );
+                        subImg1.setAttribute(
+                            'src',
+                            `/../images/products/lifeElc/${detailData.key}/${detailData.model}.png`
+                        );
                         color.textContent = `${hexToColor(detailData.color)}`;
                     }
                 }
                 // CIR-F41, BAS41-A
                 else {
-                    mainImg.setAttribute('src', `/../images/products/lifeElc/${detailData.key}/${detailData.model[idx]}.png`);
+                    mainImg.setAttribute(
+                        'src',
+                        `/../images/products/lifeElc/${detailData.key}/${detailData.model[idx]}.png`
+                    );
                     const subImgs = getAll('#lifeElcDetail .detailDiv .leftDiv .subImg .sub img');
                     subImgs.forEach((img, i) => {
-                        if (i === 0) img.setAttribute('src', `/../images/products/lifeElc/${detailData.key}/${detailData.model[idx]}.png`);
-                        else if (i >= 1) img.setAttribute('src', `/../images/products/lifeElc/${detailData.key}/${detailData.model[idx]}_display0${i}.png`);
+                        if (i === 0)
+                            img.setAttribute(
+                                'src',
+                                `/../images/products/lifeElc/${detailData.key}/${detailData.model[idx]}.png`
+                            );
+                        else if (i >= 1)
+                            img.setAttribute(
+                                'src',
+                                `/../images/products/lifeElc/${detailData.key}/${detailData.model[idx]}_display0${i}.png`
+                            );
                     });
                     color.textContent = `${hexToColor(detailData.color[idx])}`;
                 }
 
                 // 모델명 변경
-                if (typeof detailData.model === 'object') modelP.textContent = detailData.model[idx];
+                if (typeof detailData.model === 'object')
+                    modelP.textContent = detailData.model[idx];
                 if (typeof detailData.model === 'string') modelP.textContent = detailData.model;
             });
         });
@@ -1061,7 +1152,9 @@ const introduce = () => {
     const $storeImg2 = get('.introduce .store-store .store-slide-box .to-store li .img2');
     const $storeImg3 = get('.introduce .store-store .store-slide-box .to-store li .img3');
     const $storeName = get('.introduce .store-store .store-slide-box .to-store li .to-store-name');
-    const $storeAddress = get('.introduce .store-store .store-slide-box .to-store li .to-store-address');
+    const $storeAddress = get(
+        '.introduce .store-store .store-slide-box .to-store li .to-store-address'
+    );
     const $introPrev = get('.introduce .store-store .store-slide-box .to-store .to-store-prev i');
     const $introNext = get('.introduce .store-store .store-slide-box .to-store .to-store-next i');
     let cnt = 1;
@@ -1102,7 +1195,9 @@ const otherVendor = () => {
     const $stNums = getAll('.other-vendor .inner .store-select li .address-num .store-num');
     const $exTimes = getAll('.other-vendor .inner .store-select li .store-explain .time-explain');
     const $exCloses = getAll('.other-vendor .inner .store-select li .store-explain .close-explain');
-    const $exParkings = getAll('.other-vendor .inner .store-select li .store-explain .parking-explain');
+    const $exParkings = getAll(
+        '.other-vendor .inner .store-select li .store-explain .parking-explain'
+    );
     $stNames.forEach((name, idx) => {
         name.textContent = ov[idx].name;
     });
@@ -1130,7 +1225,9 @@ const otherVendor = () => {
     }
     //  지역 누르면 바뀌는거
     const $areaList = get('.other-vendor .inner .vendor-select .area-select .area-list');
-    const $areaOptions = getAll('.other-vendor .inner .vendor-select .area-select .area-list option');
+    const $areaOptions = getAll(
+        '.other-vendor .inner .vendor-select .area-select .area-list option'
+    );
     $areaList.addEventListener('change', (e) => {
         const selectedValue = e.target.value;
         let spanNum = 0;
@@ -1186,17 +1283,18 @@ const otherVendor = () => {
     const $areaBtn = get('.other-vendor .inner .area-btn');
     const $vendorInp = get('.other-vendor .inner .vendor-name-select input');
     const $areaSelect = get('.other-vendor .inner .vendor-select .area-select');
+    const $liscnt = document.querySelectorAll('.st-list li');
     $areaBtn.addEventListener('click', (e) => {
         const inputValue = $vendorInp.value.trim();
         const searchValue = inputValue || $vendorInp.placeholder;
         const selectedValue = $areaSelect.value;
+        $stLis.forEach((li) => {
+            li.style.display = 'none';
+        });
         if (!inputValue) {
             $stLis.forEach((li) => {
                 li.style.display = 'block';
             });
-            let spanNum = $stLis.length;
-            $otherNum.textContent = spanNum;
-            console.log($areaOptions.value);
         } else {
             const results = ov.filter((vendor) => vendor.name.includes(searchValue));
             const results1 = ov.filter((vendor) => vendor.address.includes(searchValue));
@@ -1211,6 +1309,7 @@ const otherVendor = () => {
                     }
                 });
             });
+
             results1.forEach((result) => {
                 $stLis.forEach((li) => {
                     if (li.textContent.includes(result.address)) {
@@ -1219,6 +1318,15 @@ const otherVendor = () => {
                 });
             });
         }
+
+        // display: block인 li 요소들의 갯수 세기
+        let otherNum = 0;
+        $stLis.forEach((li) => {
+            if (li.style.display === 'block') {
+                otherNum++;
+            }
+        });
+        $otherNum.textContent = otherNum;
     });
 };
 // 체험 예약
@@ -1228,10 +1336,18 @@ const reservation = () => {
     const $numBtns = getAll('.reservation .inner .reser-main .menuname li p '); // 숫자버튼 active
     const $numLis = getAll('.reservation .inner .reser-main .menuname li'); //글자 색 변경
     const $numPages = getAll('.reservation .inner .reser-main .reservation-page .page'); //글자 색 변경
-    const $areaLis = getAll('.reservation .inner .reser-main .store-choice .contentbox .contentbox-menu li'); // 지역 고르기
-    const $stNameNames = getAll('.reservation .inner .reser-main .store-choice .contentbox .content-choice .area-store strong'); // 매장이름
-    const $stAddressAdds = getAll('.reservation .inner .reser-main .store-choice .contentbox .content-choice .area-store p'); // 매장주소
-    const $areaStores = getAll('.reservation .inner .reser-main .store-choice .contentbox .content-choice .area-store'); // 매장 정보 li
+    const $areaLis = getAll(
+        '.reservation .inner .reser-main .store-choice .contentbox .contentbox-menu li'
+    ); // 지역 고르기
+    const $stNameNames = getAll(
+        '.reservation .inner .reser-main .store-choice .contentbox .content-choice .area-store strong'
+    ); // 매장이름
+    const $stAddressAdds = getAll(
+        '.reservation .inner .reser-main .store-choice .contentbox .content-choice .area-store p'
+    ); // 매장주소
+    const $areaStores = getAll(
+        '.reservation .inner .reser-main .store-choice .contentbox .content-choice .area-store'
+    ); // 매장 정보 li
 
     //    사이드 li 변경
     $numLis.forEach((numLi, idx) => {
@@ -1355,11 +1471,21 @@ const reservation = () => {
 
     // 고른 매장 내용
     const $getName = get('.reservation .inner .reser-main .date-choice .choice-store-name strong');
-    const $getAdd = get('.reservation .inner .reser-main .page .date-box .choice-store-name .choiced-store-content .choice-store-text .st-add');
-    const $getTime = get('.reservation .inner .reser-main .page .date-box .choice-store-name .choiced-store-content .choice-store-text .st-time');
-    const $getCloe = get('.reservation .inner .reser-main .page .date-box .choice-store-name .choiced-store-content .choice-store-text .st-close');
-    const $getPark = get('.reservation .inner .reser-main .page .date-box .choice-store-name .choiced-store-content .choice-store-text .st-park');
-    const $getTel = get('.reservation .inner .reser-main .page .date-box .choice-store-name .choiced-store-content .choice-store-text .st-tel');
+    const $getAdd = get(
+        '.reservation .inner .reser-main .page .date-box .choice-store-name .choiced-store-content .choice-store-text .st-add'
+    );
+    const $getTime = get(
+        '.reservation .inner .reser-main .page .date-box .choice-store-name .choiced-store-content .choice-store-text .st-time'
+    );
+    const $getCloe = get(
+        '.reservation .inner .reser-main .page .date-box .choice-store-name .choiced-store-content .choice-store-text .st-close'
+    );
+    const $getPark = get(
+        '.reservation .inner .reser-main .page .date-box .choice-store-name .choiced-store-content .choice-store-text .st-park'
+    );
+    const $getTel = get(
+        '.reservation .inner .reser-main .page .date-box .choice-store-name .choiced-store-content .choice-store-text .st-tel'
+    );
 
     // 기본
     $getName.textContent = stn[0].name;
@@ -1383,7 +1509,9 @@ const reservation = () => {
     }
 
     // 캘린더
-    const $tableTds = getAll('.reservation .inner .reser-main .date-choice .date-box .choice-calendar table td');
+    const $tableTds = getAll(
+        '.reservation .inner .reser-main .date-choice .date-box .choice-calendar table td'
+    );
     $tableTds.forEach((td) => {
         td.style.cursor = `pointer`;
         td.addEventListener('click', (e) => {
@@ -1395,7 +1523,9 @@ const reservation = () => {
     });
 
     //-------------- 예약시간 선택
-    const $timeBlocks = getAll('.reservation .inner .reser-main .time-choice .time-table .time-block li');
+    const $timeBlocks = getAll(
+        '.reservation .inner .reser-main .time-choice .time-table .time-block li'
+    );
     $timeBlocks.forEach((timeblock) => {
         timeblock.addEventListener('click', (e) => {
             $timeBlocks.forEach((time) => {
@@ -1406,9 +1536,15 @@ const reservation = () => {
     });
 
     //-------------- 체험제품 선택
-    const $proImgs = getAll('.reservation .inner .reser-main .product-choice .product-table .product-table-product img');
-    const $proChks = getAll('.reservation .inner .reser-main .product-choice .product-table .product-table-product .product-click');
-    const $proStrs = getAll('.reservation .inner .reser-main .product-choice .product-table .product-table-product strong');
+    const $proImgs = getAll(
+        '.reservation .inner .reser-main .product-choice .product-table .product-table-product img'
+    );
+    const $proChks = getAll(
+        '.reservation .inner .reser-main .product-choice .product-table .product-table-product .product-click'
+    );
+    const $proStrs = getAll(
+        '.reservation .inner .reser-main .product-choice .product-table .product-table-product strong'
+    );
     // 제품 data 가져오기
     $proImgs.forEach((img, idx) => {
         img.setAttribute('src', rpd[idx].img);
@@ -1427,7 +1563,9 @@ const reservation = () => {
     // 슬라이드
     const $preChPrev = get('.reservation .inner .reser-main .product-choice .product-choice-prev');
     const $preChNext = get('.reservation .inner .reser-main .product-choice .product-choice-next');
-    const $proBoxs = getAll('.reservation .inner .reser-main .product-choice .product-table .product-table-product');
+    const $proBoxs = getAll(
+        '.reservation .inner .reser-main .product-choice .product-table .product-table-product'
+    );
     // - 235px
     const addmove = 235;
     let currentwidth = 0;
@@ -1465,17 +1603,24 @@ const reservation = () => {
     });
     // 이용동의 창
     // 동의체크
-    const $lastchk = get('.reservation .data-reservation .personal-information .check-personal-information .click-check-personal');
+    const $lastchk = get(
+        '.reservation .data-reservation .personal-information .check-personal-information .click-check-personal'
+    );
 
     $lastchk.addEventListener('click', (e) => {
         $lastchk.classList.toggle('active');
     });
     // 상세내용
-    const $infoExplain = get('.reservation .data-reservation .personal-information .information-explain');
-    const $infoExplainI = get('.reservation .data-reservation .personal-information .check-personal-information i.xi-angle-down-min');
+    const $infoExplain = get(
+        '.reservation .data-reservation .personal-information .information-explain'
+    );
+    const $infoExplainI = get(
+        '.reservation .data-reservation .personal-information .check-personal-information i.ph-caret-down'
+    );
     $infoExplainI.addEventListener('click', (e) => {
         $infoExplain.classList.toggle('active');
     });
+
     // 예약버튼
     const $reserBtn = get('.reservation .data-reservation .reservation-click ');
 
@@ -1499,10 +1644,16 @@ const reserCheck = () => {
     const $popcloseBtn = get(' .popup .sure');
     const $errorMessege = get('.reser-check .inner .reser-check-main .reser-place .error-message');
     const $reserChkPhone = get('.reser-check .inner .reser-check-main .reser-check-phone');
-    const $inputNum = get('.reser-check .inner .reser-check-main .reser-place .reser-check-phone input');
+    const $inputNum = get(
+        '.reser-check .inner .reser-check-main .reser-place .reser-check-phone input'
+    );
     const $reserChkName = get('.reser-check .inner .reser-check-main .reser-check-name');
-    const $errorMessegeName = get('.reser-check .inner .reser-check-main .reser-place .error-message-name');
-    const $inputName = get('.reser-check .inner .reser-check-main .reser-place .reser-check-name input');
+    const $errorMessegeName = get(
+        '.reser-check .inner .reser-check-main .reser-place .error-message-name'
+    );
+    const $inputName = get(
+        '.reser-check .inner .reser-check-main .reser-place .reser-check-name input'
+    );
 
     const $header = get('#header');
     const $footer = get('#footer');
@@ -1744,7 +1895,9 @@ const heartService = () => {
 const iocareService = () => {
     const iocEvent1 = () => {
         const iocEventHandler = () => {
-            const animatedSections = getAll('.iocare_service_sec2 .iocService_list li .ioc_list .img_warp');
+            const animatedSections = getAll(
+                '.iocare_service_sec2 .iocService_list li .ioc_list .img_warp'
+            );
             const windowHeight = window.innerHeight;
 
             animatedSections.forEach((section) => {
@@ -2292,31 +2445,36 @@ const manual = () => {
             title: 'BEREX 마인 플러스',
             subTitle: '',
             imgUrl: '../../../images/cs/manual_berex_mineplus.png',
-            fileUrl: '../../../images/cs/manualFile/berex/MC-B02 마인 플러스 사용설명서_내수_002_(24.05.13).pdf',
+            fileUrl:
+                '../../../images/cs/manualFile/berex/MC-B02 마인 플러스 사용설명서_내수_002_(24.05.13).pdf',
         },
         {
             title: 'BEREX 리클라이닝 안마베드',
             subTitle: '',
             imgUrl: '../../../images/cs/manual_berex_reclebed.png',
-            fileUrl: '../../../images/cs/manualFile/berex/MB-M02 리클라이닝 안마베드 사용설명서_내수용_001_(24.04.15)-1.pdf',
+            fileUrl:
+                '../../../images/cs/manualFile/berex/MB-M02 리클라이닝 안마베드 사용설명서_내수용_001_(24.04.15)-1.pdf',
         },
         {
             title: '더블 사이드 매트리스',
             subTitle: 'CMK-SE01s',
             imgUrl: '../../../images/cs/manual_berex_doublesidemat.png',
-            fileUrl: '../../../images/cs/manualFile/berex/9243842 더블 사이드 매트리스 CMK_CMQ_CMSS-SE01 사용설명서_내수용_002_(23.10.30).pdf',
+            fileUrl:
+                '../../../images/cs/manualFile/berex/9243842 더블 사이드 매트리스 CMK_CMQ_CMSS-SE01 사용설명서_내수용_002_(23.10.30).pdf',
         },
         {
             title: '안마의자 페블체어',
             subTitle: '',
             imgUrl: '../../../images/cs/manual_berex_feblechair.png',
-            fileUrl: '../../../images/cs/manualFile/berex/MC-C01 페블체어 사용설명서_내수용_001_(23.08.08).pdf',
+            fileUrl:
+                '../../../images/cs/manualFile/berex/MC-C01 페블체어 사용설명서_내수용_001_(23.08.08).pdf',
         },
         {
             title: '시그니처 매트리스',
             subTitle: '',
             imgUrl: '../../../images/cs/manual_berex_sigmat.png',
-            fileUrl: '../../../images/cs/manualFile/berex/9244059 시그니처 매트리스 CMLK_CMK_CMQ_CMSS-SP01SC_SP01S 사용설명서_내수용_001_(23.10.31).pdf',
+            fileUrl:
+                '../../../images/cs/manualFile/berex/9244059 시그니처 매트리스 CMLK_CMK_CMQ_CMSS-SP01SC_SP01S 사용설명서_내수용_001_(23.10.31).pdf',
         },
     ];
     const bathArr = [
@@ -2324,31 +2482,36 @@ const manual = () => {
             title: '더블케어 비데',
             subTitle: 'BAS37-A',
             imgUrl: '../../../images/cs/manual_bath_doublecare.png',
-            fileUrl: '../../../images/cs/manualFile/bath/1233540 BAS37-A 더블케어 비데 사용설명서_내수용_003_(23.01.10).pdf',
+            fileUrl:
+                '../../../images/cs/manualFile/bath/1233540 BAS37-A 더블케어 비데 사용설명서_내수용_003_(23.01.10).pdf',
         },
         {
             title: '더블케어 플러스 비데',
             subTitle: 'BAS38-B',
             imgUrl: '../../../images/cs/manual_bath_doublecareplus.png',
-            fileUrl: '../../../images/cs/manualFile/bath/1237467 BAS38-B 더블케어 플러스 비데 사용설명서_내수용_003_(24.05.20).pdf',
+            fileUrl:
+                '../../../images/cs/manualFile/bath/1237467 BAS38-B 더블케어 플러스 비데 사용설명서_내수용_003_(24.05.20).pdf',
         },
         {
             title: '스스로케어 비데(일반형)',
             subTitle: 'BAS40-A',
             imgUrl: '../../../images/cs/manual_bath_selfcaredefault.png',
-            fileUrl: '../../../images/cs/manualFile/bath/1236844 BAS40-A 스스로케어 비데(일반형) 사용설명서_내수용_004_(24.05.20).pdf',
+            fileUrl:
+                '../../../images/cs/manualFile/bath/1236844 BAS40-A 스스로케어 비데(일반형) 사용설명서_내수용_004_(24.05.20).pdf',
         },
         {
             title: '인텔리케어 비데',
             subTitle: 'BASH30-A',
             imgUrl: '../../../images/cs/manual_bath_intelicare.png',
-            fileUrl: '../../../images/cs/manualFile/bath/1227938 BASH30-A 인텔리케어 비데 사용설명서_내수용_009_(23.01.10).pdf',
+            fileUrl:
+                '../../../images/cs/manualFile/bath/1227938 BASH30-A 인텔리케어 비데 사용설명서_내수용_009_(23.01.10).pdf',
         },
         {
             title: '코웨이 연수기',
             subTitle: 'BB15-A',
             imgUrl: '../../../images/cs/manual_bath_coway.png',
-            fileUrl: '../../../images/cs/manualFile/bath/1228395 BB15-A 코웨이 연수기 사용설명서_내수용_006_(21.08.19).pdf',
+            fileUrl:
+                '../../../images/cs/manualFile/bath/1228395 BB15-A 코웨이 연수기 사용설명서_내수용_006_(21.08.19).pdf',
         },
     ];
     const inductionArr = [
@@ -2356,31 +2519,36 @@ const manual = () => {
             title: '프라임S 하이브리드 (인덕션 2구+ 하이라이트 1구)',
             subTitle: 'CHR-04',
             imgUrl: '../../../images/cs/manual_induction_primeshi.png',
-            fileUrl: '../../../images/cs/manualFile/induction/9243462 CER-04 하이라이트 프라임S 사용설명서_내수용_001_(23.07.13).pdf',
+            fileUrl:
+                '../../../images/cs/manualFile/induction/9243462 CER-04 하이라이트 프라임S 사용설명서_내수용_001_(23.07.13).pdf',
         },
         {
             title: '프라임S 인덕션 (3구)',
             subTitle: 'CIR-303',
             imgUrl: '../../../images/cs/manual_induction_primes.png',
-            fileUrl: '../../../images/cs/manualFile/induction/9243360 CIR-303 인덕션 프라임S 사용설명서_내수용_001_(23.07.12).pdf',
+            fileUrl:
+                '../../../images/cs/manualFile/induction/9243360 CIR-303 인덕션 프라임S 사용설명서_내수용_001_(23.07.12).pdf',
         },
         {
             title: '코웨이 인덕션 W (전기레인지)',
             subTitle: 'CIP-30WWS',
             imgUrl: '../../../images/cs/manual_induction_inductionw.png',
-            fileUrl: '../../../images/cs/manualFile/induction/P9206250 CIP-30W 인덕션 W 사용설명서(홈페이지용)_내수용_001_(23.09.15).pdf',
+            fileUrl:
+                '../../../images/cs/manualFile/induction/P9206250 CIP-30W 인덕션 W 사용설명서(홈페이지용)_내수용_001_(23.09.15).pdf',
         },
         {
             title: '노블 인덕션 프리덤 Wide (최대 출력형)',
             subTitle: 'CIR-F60GS',
             imgUrl: '../../../images/cs/manual_induction_noblemaxwide.png',
-            fileUrl: '../../../images/cs/manualFile/induction/9238376 CIR-F60GS 노블와이드최대출력 사용설명서_내수용_002_(22.05.09)_2.pdf',
+            fileUrl:
+                '../../../images/cs/manualFile/induction/9238376 CIR-F60GS 노블와이드최대출력 사용설명서_내수용_002_(22.05.09)_2.pdf',
         },
         {
             title: '노블 인덕션 프리덤 (최대 출력형)',
             subTitle: 'CIR-F40PS',
             imgUrl: '../../../images/cs/manual_induction_noblemax.png',
-            fileUrl: '../../../images/cs/manualFile/induction/9238379 CIR-F40GS_CIR-F41GS 노블 인덕션 프리덤 사용설명서_내수용_002_(22.05.09)_2.pdf',
+            fileUrl:
+                '../../../images/cs/manualFile/induction/9238379 CIR-F40GS_CIR-F41GS 노블 인덕션 프리덤 사용설명서_내수용_002_(22.05.09)_2.pdf',
         },
     ];
 
@@ -2510,14 +2678,38 @@ const manual = () => {
 // 자주 찾는 질문
 const faq = () => {
     const faqArr = [
-        { title: '안마베드, 척추베드 사용 강도 안내', group: '제품', url: './csFaqPost/fPost_01.html' },
-        { title: '다중이용시설의 기준 및 무상 AS 내용은 어떻게 되나요?', group: '제품', url: './csFaqPost/fPost_02.html' },
-        { title: '하트서비스 일정확인 및 변경하고 싶어요', group: '서비스', url: './csFaqPost/fPost_03.html' },
-        { title: '안마의자를 사용하다가 오염이 되었어요. 어떻게 해야하나요?', group: '서비스', url: './csFaqPost/fPost_04.html' },
-        { title: '내 정보 조회 및 변경이 가능한가요', group: '사이트이용', url: './csFaqPost/fPost_05.html' },
+        {
+            title: '안마베드, 척추베드 사용 강도 안내',
+            group: '제품',
+            url: './csFaqPost/fPost_01.html',
+        },
+        {
+            title: '다중이용시설의 기준 및 무상 AS 내용은 어떻게 되나요?',
+            group: '제품',
+            url: './csFaqPost/fPost_02.html',
+        },
+        {
+            title: '하트서비스 일정확인 및 변경하고 싶어요',
+            group: '서비스',
+            url: './csFaqPost/fPost_03.html',
+        },
+        {
+            title: '안마의자를 사용하다가 오염이 되었어요. 어떻게 해야하나요?',
+            group: '서비스',
+            url: './csFaqPost/fPost_04.html',
+        },
+        {
+            title: '내 정보 조회 및 변경이 가능한가요',
+            group: '사이트이용',
+            url: './csFaqPost/fPost_05.html',
+        },
         { title: 'A/S신청방법이 궁금해요', group: '사이트이용', url: './csFaqPost/fPost_06.html' },
         { title: '부정제보는 어떻게 하나요', group: '기타', url: './csFaqPost/fPost_07.html' },
-        { title: '콜센터에서 주문하면서 전자계약서 서명 알림톡을 받았는데 서명은 어떻게 하나요', group: '기타', url: './csFaqPost/fPost_08.html' },
+        {
+            title: '콜센터에서 주문하면서 전자계약서 서명 알림톡을 받았는데 서명은 어떻게 하나요',
+            group: '기타',
+            url: './csFaqPost/fPost_08.html',
+        },
     ];
 
     const $faqUl = get('.faq .con-board ul');
@@ -2571,14 +2763,46 @@ const faq = () => {
 // 공지사항
 const notice = () => {
     const noticeArr = [
-        { title: '안심번호서비스 서버 점검 안내', date: '2024.08.13', url: './csNoticePost/nPost_01.html' },
-        { title: '코웨이닷컴 개인정보 처리방침 개정 고지', date: '2024.07.18', url: './csNoticePost/nPost_02.html' },
-        { title: '코웨이 계약/멤버십 약관 개정 고지', date: '2024.07.16', url: './csNoticePost/nPost_03.html' },
-        { title: '코웨이닷컴 개인정보 처리방침 개정 고지', date: '2024.06.27', url: './csNoticePost/nPost_04.html' },
-        { title: '코웨이 계약/멤버십 약관 개정 고지', date: '2024.06.25', url: './csNoticePost/nPost_05.html' },
-        { title: '코웨이 계약/멤버십 약관 개정 고지', date: '2024.05.31', url: './csNoticePost/nPost_06.html' },
-        { title: '사업자 마이코웨이 이용 제한 안내', date: '2024.05.14', url: './csNoticePost/nPost_07.html' },
-        { title: '코웨이닷컴 개인정보 처리방침 개정 고지', date: '2024.05.13', url: './csNoticePost/nPost_08.html' },
+        {
+            title: '안심번호서비스 서버 점검 안내',
+            date: '2024.08.13',
+            url: './csNoticePost/nPost_01.html',
+        },
+        {
+            title: '코웨이닷컴 개인정보 처리방침 개정 고지',
+            date: '2024.07.18',
+            url: './csNoticePost/nPost_02.html',
+        },
+        {
+            title: '코웨이 계약/멤버십 약관 개정 고지',
+            date: '2024.07.16',
+            url: './csNoticePost/nPost_03.html',
+        },
+        {
+            title: '코웨이닷컴 개인정보 처리방침 개정 고지',
+            date: '2024.06.27',
+            url: './csNoticePost/nPost_04.html',
+        },
+        {
+            title: '코웨이 계약/멤버십 약관 개정 고지',
+            date: '2024.06.25',
+            url: './csNoticePost/nPost_05.html',
+        },
+        {
+            title: '코웨이 계약/멤버십 약관 개정 고지',
+            date: '2024.05.31',
+            url: './csNoticePost/nPost_06.html',
+        },
+        {
+            title: '사업자 마이코웨이 이용 제한 안내',
+            date: '2024.05.14',
+            url: './csNoticePost/nPost_07.html',
+        },
+        {
+            title: '코웨이닷컴 개인정보 처리방침 개정 고지',
+            date: '2024.05.13',
+            url: './csNoticePost/nPost_08.html',
+        },
     ];
 
     const $noticeUl = get('.notice .con-board ul');
@@ -2638,13 +2862,13 @@ const transfer = () => {
     get('#modal .close').addEventListener('click', (e) => {
         setTimeout(() => {
             // 로그인html로 경로 수정
-            window.location.href = '/page/login/joinPage1.html';
+            window.location.href = '/page/login/login.html';
         }, 300);
     });
     get('#modal .sure').addEventListener('click', (e) => {
         setTimeout(() => {
             // 로그인html로 경로 수정
-            window.location.href = '/page/login/joinPage1.html';
+            window.location.href = '/page/login/login.html';
         }, 300);
     });
 };
@@ -2656,13 +2880,13 @@ const transferNow = () => {
     get('#modal .close').addEventListener('click', (e) => {
         setTimeout(() => {
             // 로그인html로 경로 수정
-            window.location.href = '/page/login/joinPage1.html';
+            window.location.href = '/page/login/login.html';
         }, 300);
     });
     get('#modal .sure').addEventListener('click', (e) => {
         setTimeout(() => {
             // 로그인html로 경로 수정
-            window.location.href = '/page/login/joinPage1.html';
+            window.location.href = '/page/login/login.html';
         }, 300);
     });
 };
@@ -2677,13 +2901,13 @@ const contact = () => {
     get('#modal .close').addEventListener('click', (e) => {
         setTimeout(() => {
             // 로그인html로 경로 수정
-            window.location.href = '/page/login/joinPage1.html';
+            window.location.href = '/page/login/login.html';
         }, 300);
     });
     get('#modal .sure').addEventListener('click', (e) => {
         setTimeout(() => {
             // 로그인html로 경로 수정
-            window.location.href = '/page/login/joinPage1.html';
+            window.location.href = '/page/login/login.html';
         }, 300);
     });
 };
@@ -2975,7 +3199,9 @@ const myPage = () => {
     const $popPageClose = get('#pop .product-registration .inner .registration-content .close ');
     const $popPop = get('#pop .product-registration .inner .registration-content p');
     const $footer = get('#footer');
-    const $goingPros = getAll('.myPage .inner .main-text .recommend-product .product .product-going');
+    const $goingPros = getAll(
+        '.myPage .inner .main-text .recommend-product .product .product-going'
+    );
     const $otherPro = get('.myPage .inner .main-text .recommend-product .other-product');
 
     $register.addEventListener('click', (e) => {

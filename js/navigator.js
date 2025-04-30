@@ -8,67 +8,68 @@ const translateNav = () => {
     let nav5 = '';
 
     // nav1 - 폴더
-    if (location.pathname.split('/')[2] === 'products') nav1 = '제품';
-    if (location.pathname.split('/')[2] === 'story') nav1 = '추천 컨텐츠';
+    if (location.pathname.split('/')[3] === 'products') nav1 = '제품';
+    if (location.pathname.split('/')[3] === 'story') nav1 = '추천 컨텐츠';
 
-    if (location.pathname.split('/')[2] === 'store') nav1 = '매장';
+    if (location.pathname.split('/')[3] === 'store') nav1 = '매장';
 
-    if (location.pathname.split('/')[2] === 'service') nav1 = '서비스';
+    if (location.pathname.split('/')[3] === 'service') nav1 = '서비스';
 
-    if (location.pathname.split('/')[2] === 'event') nav1 = '이벤트/혜택';
+    if (location.pathname.split('/')[3] === 'event') nav1 = '이벤트/혜택';
 
-    if (location.pathname.split('/')[2] === 'cs') nav1 = '고객지원';
+    if (location.pathname.split('/')[3] === 'cs') nav1 = '고객지원';
 
-    if (location.pathname.split('/')[2] === 'myPage') nav1 = '마이코웨이';
+    if (location.pathname.split('/')[3] === 'myPage') nav1 = '마이코웨이';
 
     // nav2 - 폴더 (상세페이지)
-    if (location.pathname.split('/')[3] === 'lifeelc') nav2 = '주방/생활가전';
+    if (location.pathname.split('/')[4] === 'lifeelc') nav2 = '주방/생활가전';
 
-    if (location.pathname.split('/')[3] === 'productService') nav2 = '제품 관리 서비스';
-    if (location.pathname.split('/')[3] === 'totalCareService') nav2 = '토탈케어서비스';
-    if (location.pathname.split('/')[3] === 'filterService') nav2 = '필터회수 서비스';
-    if (location.pathname.split('/')[3] === 'codymatching') nav2 = '실시간 코디매칭';
-    if (location.pathname.split('/')[3] === 'iocareService') nav2 = 'IoCare 서비스';
+    if (location.pathname.split('/')[4] === 'productService') nav2 = '제품 관리 서비스';
+    if (location.pathname.split('/')[4] === 'totalCareService') nav2 = '토탈케어서비스';
+    if (location.pathname.split('/')[4] === 'filterService') nav2 = '필터회수 서비스';
+    if (location.pathname.split('/')[4] === 'codymatching') nav2 = '실시간 코디매칭';
+    if (location.pathname.split('/')[4] === 'iocareService') nav2 = 'IoCare 서비스';
 
-    if (location.pathname.split('/')[3] === 'progressing') nav2 = '이벤트';
-    if (location.pathname.split('/')[3] === 'winnering') nav2 = '이벤트';
+    if (location.pathname.split('/')[4] === 'progressing') nav2 = '이벤트';
+    if (location.pathname.split('/')[4] === 'winnering') nav2 = '이벤트';
 
-    if (location.pathname.split('/')[3] === 'csBoard') nav2 = '고객 게시판';
-    if (location.pathname.split('/')[3] === 'csProduct') nav2 = '제품 사용 지원';
-    if (location.pathname.split('/')[3] === 'csContact') nav2 = '문의 지원';
+    if (location.pathname.split('/')[4] === 'csBoard') nav2 = '고객 게시판';
+    if (location.pathname.split('/')[4] === 'csProduct') nav2 = '제품 사용 지원';
+    if (location.pathname.split('/')[4] === 'csContact') nav2 = '문의 지원';
 
-    if (location.pathname.split('/')[3] === 'myPage') nav2 = '마이코웨이';
+    if (location.pathname.split('/')[4] === 'myPage') nav2 = '마이코웨이';
 
     // nav2 - html
-    if (location.pathname.split('/')[3] === 'lifeelc.html') nav2 = '주방/생활가전';
-    if (location.pathname.split('/')[3] === 'waterelc.html') nav2 = '룰루비데/연수기';
-    if (location.pathname.split('/')[3] === 'berexelc.html') nav2 = 'BEREX 매트리스/안마의자';
-    if (location.pathname.split('/')[3] === 'refurb.html') nav2 = '리퍼브 기획전';
-    if (location.pathname.split('/')[3] === 'bestreview.html') nav2 = '베스트 리뷰';
+    if (location.pathname.split('/')[5] === 'lifeelc.html') nav2 = '주방/생활가전';
+    if (location.pathname.split('/')[5] === 'waterelc.html') nav2 = '룰루비데/연수기';
+    if (location.pathname.split('/')[5] === 'berexelc.html') nav2 = 'BEREX 매트리스/안마의자';
+    if (location.pathname.split('/')[5] === 'refurb.html') nav2 = '리퍼브 기획전';
+    if (location.pathname.split('/')[5] === 'bestreview.html') nav2 = '베스트 리뷰';
 
-    if (location.pathname.split('/')[3] === 'introduce.html') nav2 = '코웨이 매장 소개';
-    if (location.pathname.split('/')[3] === 'reservation.html') nav2 = '체험 예약';
-    if (location.pathname.split('/')[3] === 'reserCheck.html') nav2 = '체험 예약 조회';
-    if (location.pathname.split('/')[3] === 'otherVendor.html') nav2 = '기타 판매처';
+    if (location.pathname.split('/')[5] === 'introduce.html') nav2 = '코웨이 매장 소개';
+    if (location.pathname.split('/')[5] === 'reservation.html') nav2 = '체험 예약';
+    if (location.pathname.split('/')[5] === 'reserCheck.html') nav2 = '체험 예약 조회';
+    if (location.pathname.split('/')[5] === 'otherVendor.html') nav2 = '기타 판매처';
 
-    if (location.pathname.split('/')[3] === 'heartService') nav2 = '하트서비스';
-    if (location.pathname.split('/')[3] === 'airCare.html') nav2 = '하트서비스';
-    if (location.pathname.split('/')[3] === 'bidet.html') nav2 = '하트서비스';
-    if (location.pathname.split('/')[3] === 'waterSoftener.html') nav2 = '하트서비스';
+    if (location.pathname.split('/')[5] === 'heartService') nav2 = '하트서비스';
+    if (location.pathname.split('/')[5] === 'airCare.html') nav2 = '하트서비스';
+    if (location.pathname.split('/')[5] === 'bidet.html') nav2 = '하트서비스';
+    if (location.pathname.split('/')[5] === 'waterSoftener.html') nav2 = '하트서비스';
 
-    if (location.pathname.split('/')[3] === 'affiliateCard.html') nav2 = '제휴카드';
-    if (location.pathname.split('/')[3] === 'cowayLive.html') nav2 = '코웨이LiVE';
+    if (location.pathname.split('/')[5] === 'affiliateCard.html') nav2 = '제휴카드';
+    if (location.pathname.split('/')[5] === 'cowayLive.html') nav2 = '코웨이LiVE';
 
-    if (location.pathname.split('/')[3] === 'csHome.html') nav2 = '고객지원 홈';
+    if (location.pathname.split('/')[5] === 'csHome.html') nav2 = '고객지원 홈';
 
     // nav3 - 폴더
-    if (location.pathname.split('/')[4] === 'csNoticePost') nav3 = '공지사항';
-    if (location.pathname.split('/')[4] === 'csFaqPost') nav3 = '자주 찾는 질문';
+    if (location.pathname.split('/')[6] === 'csNoticePost') nav3 = '공지사항';
+    if (location.pathname.split('/')[6] === 'csFaqPost') nav3 = '자주 찾는 질문';
 
     // nav3 - html (상세페이지) + localStorage 사용
     let detailData = '';
-    if (localStorage.getItem('productDetail') !== null) detailData = JSON.parse(localStorage.getItem('productDetail'));
-    if (location.pathname.split('/')[4] === 'lifeelcDetail.html') {
+    if (localStorage.getItem('productDetail') !== null)
+        detailData = JSON.parse(localStorage.getItem('productDetail'));
+    if (location.pathname.split('/')[6] === 'lifeelcDetail.html') {
         if (detailData.category === 'etc') nav3 = '기타';
         else if (detailData.category === 'electricRange') nav3 = '전기레인지';
         else if (detailData.category === 'bidet') {
@@ -88,28 +89,31 @@ const translateNav = () => {
             nav2 = '리퍼브 기획전';
             nav3 = '비데';
         }
-        if (detailData.category.includes('refurb') && detailData.category.includes('TrainingPeriod')) {
+        if (
+            detailData.category.includes('refurb') &&
+            detailData.category.includes('TrainingPeriod')
+        ) {
             nav2 = '리퍼브 기획전';
             nav3 = '정수기';
         }
     }
 
-    if (location.pathname.split('/')[4] === 'prizeWinner.html') nav3 = '당첨자 발표';
-    if (location.pathname.split('/')[4] === 'eventsinProgress.html') {
+    if (location.pathname.split('/')[6] === 'prizeWinner.html') nav3 = '당첨자 발표';
+    if (location.pathname.split('/')[6] === 'eventsinProgress.html') {
         nav3 = '진행중 이벤트';
     }
 
-    if (location.pathname.split('/')[4] === 'as_step1.html') nav3 = 'A/S·이전설치 신청';
-    if (location.pathname.split('/')[4] === 'as_step2.html') nav3 = 'A/S·이전설치 신청';
-    if (location.pathname.split('/')[4] === 'faq.html') nav3 = '자주 찾는 질문';
-    if (location.pathname.split('/')[4] === 'fareGuarantee_step1.html') nav3 = '요금/보증 안내';
-    if (location.pathname.split('/')[4] === 'fareGuarantee_step2.html') nav3 = '요금/보증 안내';
-    if (location.pathname.split('/')[4] === 'manual.html') nav3 = '제품 사용설명서 찾기';
-    if (location.pathname.split('/')[4] === 'transfer_step1.html') nav3 = '양도양수 서비스';
-    if (location.pathname.split('/')[4] === 'transfer_step2.html') nav3 = '양도양수 서비스';
-    if (location.pathname.split('/')[4] === 'transfer_step3.html') nav3 = '양도양수 서비스';
-    if (location.pathname.split('/')[4] === 'contact.html') nav3 = '1:1 문의';
-    if (location.pathname.split('/')[4] === 'notice.html') nav3 = '공지사항';
+    if (location.pathname.split('/')[6] === 'as_step1.html') nav3 = 'A/S·이전설치 신청';
+    if (location.pathname.split('/')[6] === 'as_step2.html') nav3 = 'A/S·이전설치 신청';
+    if (location.pathname.split('/')[6] === 'faq.html') nav3 = '자주 찾는 질문';
+    if (location.pathname.split('/')[6] === 'fareGuarantee_step1.html') nav3 = '요금/보증 안내';
+    if (location.pathname.split('/')[6] === 'fareGuarantee_step2.html') nav3 = '요금/보증 안내';
+    if (location.pathname.split('/')[6] === 'manual.html') nav3 = '제품 사용설명서 찾기';
+    if (location.pathname.split('/')[6] === 'transfer_step1.html') nav3 = '양도양수 서비스';
+    if (location.pathname.split('/')[6] === 'transfer_step2.html') nav3 = '양도양수 서비스';
+    if (location.pathname.split('/')[6] === 'transfer_step3.html') nav3 = '양도양수 서비스';
+    if (location.pathname.split('/')[6] === 'contact.html') nav3 = '1:1 문의';
+    if (location.pathname.split('/')[6] === 'notice.html') nav3 = '공지사항';
 
     // nav4 - html
 
@@ -171,7 +175,7 @@ const openNavigator = () => {
                 }
             });
     };
-    getPage('/page/navigator.html', '#navigator');
+    getPage('../../page/navigator.html', '#navigator');
 };
 // 실행
 (() => {

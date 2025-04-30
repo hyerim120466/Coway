@@ -279,7 +279,7 @@ const comInit = () => {
             .then((res) => res.text())
             .then((res) => {
                 if (tag === '#header') {
-                    get(tag).innerHTML = res;
+                    document.querySelector(tag).innerHTML = res;
 
                     gnbMenu();
                     loginPop();
@@ -287,15 +287,15 @@ const comInit = () => {
                     globalPop();
                 }
                 if (tag === '#footer') {
-                    get(tag).innerHTML = res;
+                    document.querySelector(tag).innerHTML = res;
 
                     familySite();
                     popup();
                 }
             });
     };
-    getPage('/page/header.html', '#header');
-    getPage('/page/footer.html', '#footer');
+    getPage('../../page/header.html', '#header');
+    getPage('../../page/footer.html', '#footer');
 };
 
 // 실행
