@@ -37,7 +37,7 @@ const translateNav = () => {
     if (location.pathname.split('/')[4] === 'csProduct') nav2 = '제품 사용 지원';
     if (location.pathname.split('/')[4] === 'csContact') nav2 = '문의 지원';
 
-    if (location.pathname.split('/')[4] === 'myPage') nav2 = '마이코웨이';
+    if (location.pathname.split('/')[2] === 'myPage') nav2 = '마이코웨이';
 
     // nav2 - html
     if (location.pathname.split('/')[5] === 'lifeelc.html') nav2 = '주방/생활가전';
