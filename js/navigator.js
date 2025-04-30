@@ -8,10 +8,10 @@ const translateNav = () => {
     let nav5 = '';
 
     // nav1 - 폴더
-    if (location.pathname.split('/')[3] === 'products') nav1 = '제품';
-    if (location.pathname.split('/')[3] === 'story') nav1 = '추천 컨텐츠';
+    if (location.pathname.split('/')[2] === 'products') nav1 = '제품';
+    if (location.pathname.split('/')[2] === 'story') nav1 = '추천 컨텐츠';
 
-    if (location.pathname.split('/')[3] === 'store') nav1 = '매장';
+    if (location.pathname.split('/')[2] === 'store') nav1 = '매장';
 
     if (location.pathname.split('/')[3] === 'service') nav1 = '서비스';
 
@@ -46,10 +46,10 @@ const translateNav = () => {
     if (location.pathname.split('/')[5] === 'refurb.html') nav2 = '리퍼브 기획전';
     if (location.pathname.split('/')[5] === 'bestreview.html') nav2 = '베스트 리뷰';
 
-    if (location.pathname.split('/')[5] === 'introduce.html') nav2 = '코웨이 매장 소개';
-    if (location.pathname.split('/')[5] === 'reservation.html') nav2 = '체험 예약';
-    if (location.pathname.split('/')[5] === 'reserCheck.html') nav2 = '체험 예약 조회';
-    if (location.pathname.split('/')[5] === 'otherVendor.html') nav2 = '기타 판매처';
+    if (location.pathname.split('/')[3] === 'introduce.html') nav2 = '코웨이 매장 소개';
+    if (location.pathname.split('/')[3] === 'reservation.html') nav2 = '체험 예약';
+    if (location.pathname.split('/')[3] === 'reserCheck.html') nav2 = '체험 예약 조회';
+    if (location.pathname.split('/')[3] === 'otherVendor.html') nav2 = '기타 판매처';
 
     if (location.pathname.split('/')[5] === 'heartService') nav2 = '하트서비스';
     if (location.pathname.split('/')[5] === 'airCare.html') nav2 = '하트서비스';
