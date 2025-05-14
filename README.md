@@ -50,4 +50,4 @@
 
 - 예외처리 ( 이름 , 비밀번호 )
   
-![Image](https://github.com/user-attachments/assets/278c1a3c-052d-428c-8417-b3a0eab64802)
+![Image](https://github.com/user-attachments/assets/95e4cfca-8f00-4307-a51c-5146c8b36e36)
