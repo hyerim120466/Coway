@@ -21,7 +21,7 @@
 
 - 매장 예약
 
-  ![Image](https://github.com/user-attachments/assets/d4ed1d9f-c0d2-4fbb-a36b-0aee222ad512)
+  ![Image](https://github.com/user-attachments/assets/d6bf14c9-8b4a-4741-b302-bf3094f65312)
 
 - 이름 및 전화번호 입력 / 예외처리
 
