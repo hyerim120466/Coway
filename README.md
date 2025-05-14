@@ -32,7 +32,7 @@
 
 - 이름
 
-![Image](https://github.com/user-attachments/assets/3d09d81c-bcd9-482e-9bce-791b569b523f)
+![Image](https://github.com/user-attachments/assets/c1da4b57-98e0-4948-97e7-aecd83957787)
 
 - 연락처
 
