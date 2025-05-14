@@ -11,7 +11,7 @@
 ## 기타판매처
  - 지역 select
 
-  ![Image](https://github.com/user-attachments/assets/4b832426-0922-4f7d-96f8-a7981122cdd9)
+![Image](https://github.com/user-attachments/assets/4486fee2-25b3-42f9-99fb-983f528577ff)
 
  - 검색 search
 
